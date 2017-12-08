@@ -1,30 +1,14 @@
-import {Directive, HostBinding, HostListener, Input, OnInit} from '@angular/core';
+import {Directive, HostBinding, HostListener} from '@angular/core';
 
 @Directive({
-  selector: '[appDropdownDirective]'
+  selector: '[appDropdown]'
 })
-export class DropdownDirective implements OnInit {
-  @Input() defaultState: boolean;
-  @HostBinding('class') dropdownState;
-  currentState: boolean;
+export class DropdownDirective {
+  @HostBinding('class.open') isOpen = false;
 
   constructor() {}
 
-  ngOnInit() {
-    this.currentState = this.defaultState;
-    if (this.currentState) {
-      this.dropdownState = 'btn-group open';
-    }else {
-      this.dropdownState = 'btn-group';
-    }
-  }
-
-  @HostListener('click') onClick(eventData: Event) {
-    this.currentState = !this.currentState;
-    if (this.currentState) {
-      this.dropdownState = 'btn-group open';
-    }else {
-      this.dropdownState = 'btn-group';
-    }
+  @HostListener('click') toggleOpen(eventData: Event) {
+    this.isOpen = !this.isOpen;
   }
 }
