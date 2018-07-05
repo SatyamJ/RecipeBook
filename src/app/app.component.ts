@@ -7,7 +7,7 @@ import {Component} from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
-  currentTab = 'recipes'
+  currentTab = 'recipes';
 
   selectTab(selectedTab: string) {
     this.currentTab = selectedTab;

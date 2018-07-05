@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Recipe} from './recipe.model';
 import {RecipeService} from './recipe.service';
 
@@ -6,19 +6,21 @@ import {RecipeService} from './recipe.service';
   selector: 'app-recipes',
   templateUrl: './recipes.component.html',
   styleUrls: ['./recipes.component.css'],
-  providers: [ RecipeService ],
+  providers: [RecipeService],
   encapsulation: ViewEncapsulation.None
 })
 export class RecipesComponent implements OnInit {
   selectedRecipe: Recipe;
 
   constructor(private recipeService: RecipeService) {
-    this.recipeService.selectedRecipe.subscribe(
-      (recipe: Recipe) => {
-        this.selectedRecipe = recipe;
-      }
-    );
+    this.recipeService
+      .selectedRecipe
+      .subscribe((recipe: Recipe) => {
+          this.selectedRecipe = recipe;
+        }
+      );
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 }
