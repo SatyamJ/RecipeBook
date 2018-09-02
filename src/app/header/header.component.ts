@@ -1,4 +1,8 @@
 import {Component, EventEmitter, OnInit, Output, ViewEncapsulation} from '@angular/core';
+import {StorageDataService} from '../shared/storage-data.service';
+import {Response} from '@angular/http';
+import {RecipeService} from '../recipes/recipe.service';
+import {AuthService} from "../auth/auth.service";
 
 @Component({
   selector: 'app-header',
@@ -8,7 +12,7 @@ import {Component, EventEmitter, OnInit, Output, ViewEncapsulation} from '@angul
 })
 export class HeaderComponent implements OnInit {
   @Output() tabSelected = new EventEmitter<string>();
-  constructor() { }
+  constructor(private storageDataService: StorageDataService, private authService: AuthService) { }
 
   ngOnInit() {
   }
@@ -16,4 +20,22 @@ export class HeaderComponent implements OnInit {
   onSelectTab(tab: string) {
     this.tabSelected.emit(tab);
   }
+
+  onSave() {
+    this.storageDataService.storeData()
+      .subscribe(
+        (response: Response) => {
+          console.log(response);
+        }
+      );
+  }
+
+  onFetch() {
+    this.storageDataService.fetchData();
+  }
+
+  onLogout() {
+    this.authService.logout();
+  }
+
 }
