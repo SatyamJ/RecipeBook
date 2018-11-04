@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {DropdownDirective} from './dropdown.directive';
 
 @NgModule({
-  exports: [DropdownDirective, CommonModule],
-  declarations: [DropdownDirective]
+  declarations: [DropdownDirective],
+  exports: [DropdownDirective, CommonModule]
 })
 export class SharedModule {}
