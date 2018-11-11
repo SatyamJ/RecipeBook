@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit, Output, ViewEncapsulation} from '@angul
 import {StorageDataService} from '../../shared/storage-data.service';
 import {Response} from '@angular/http';
 import {AuthService} from '../../auth/auth.service';
+import {HttpEvent} from "@angular/common/http";
 
 @Component({
   selector: 'app-header',
@@ -23,7 +24,7 @@ export class HeaderComponent implements OnInit {
   onSave() {
     this.storageDataService.storeData()
       .subscribe(
-        (response: Response) => {
+        (response) => {
           console.log(response);
         }
       );
