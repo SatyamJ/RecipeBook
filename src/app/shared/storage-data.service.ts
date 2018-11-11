@@ -12,7 +12,7 @@ export class StorageDataService {
   constructor(private httpClient: HttpClient, private recipeService: RecipeService, private authService: AuthService) {}
 
   storeData() {
-    const accessToken = this.authService.getToken();
+    // const accessToken = this.authService.getToken();
     /*
     return this.httpClient.put(
       StorageDataService.BASE_PATH + 'recipes.json',
@@ -29,19 +29,19 @@ export class StorageDataService {
       StorageDataService.BASE_PATH + 'recipes.json',
       this.recipeService.getRecipes(),
       {
-        reportProgress: true,
-        params: new HttpParams().set('auth', accessToken)
+        reportProgress: true
+        // params: new HttpParams().set('auth', accessToken)
       });
     return this.httpClient.request(req);
   }
 
   fetchData() {
-    const accessToken = this.authService.getToken();
+    // const accessToken = this.authService.getToken();
     this.httpClient.get<Recipe[]>(StorageDataService.BASE_PATH + 'recipes.json',
       {
         observe: 'body',
-        responseType: 'json',
-        params: new HttpParams().set('auth', accessToken)
+        responseType: 'json'
+        // params: new HttpParams().set('auth', accessToken)
       })
       .pipe(map(
         (recipes: Recipe[]) => {
